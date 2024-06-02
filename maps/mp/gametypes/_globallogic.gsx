@@ -2431,7 +2431,7 @@ newseason(pl_season)
 		self thread maps\mp\gametypes\_rank::resetEverything();
 		self waittill("spawned");
 		wait 1;
-		self iprintlnBold("This is your first visit to Explicit Bouncers Promod.\n^1 Welcome to the " + level.season + " season!");
+		self iprintlnBold("This is your first visit to SDWarriors Promod.\n^1 Welcome to the " + level.season + " season!");
 		wait 3;
 		self iprintlnBold("If this is not your first visit and you had prestige, please contact admins.");
 	}
