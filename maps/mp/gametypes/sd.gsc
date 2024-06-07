@@ -106,7 +106,7 @@ getBetterTeam()
 }
 
 onStartGameType()
-0 comments on commit 2d98829
+
 
 onStartGameType()
 {
