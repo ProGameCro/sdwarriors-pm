@@ -62,31 +62,46 @@ onRoundSwitch()
 
 getBetterTeam()
 {
-	kills["allies"] = 0;
-	kills["axis"] = 0;
-	deaths["allies"] = 0;
-	deaths["axis"] = 0;
-	for(i = 0; i<level.players.size; i++)
-	{
-		player = level.players[i];
-		team = player.pers["team"];
-		if(isDefined(team) && (team == "allies" || team == "axis"))
-		{
-			kills[team] += player.kills;
-			deaths[team] += player.deaths;
-		}
-	}
-	if(kills["allies"] > kills["axis"])
-		return "allies";
-	else if(kills["axis"] > kills["allies"])
-		return "axis";
-	if(deaths["allies"] < deaths["axis"])
-		return "allies";
-	else if(deaths["axis"] < deaths["allies"])
-		return "axis";
-	if(randomint(2) == 0)
-		return "allies";
-	return "axis";
+    // Definicija varijabli kills i deaths
+    kills = [];
+    deaths = [];
+
+    // Inicijalizacija brojača za sve timove
+    kills["allies"] = 0;
+    kills["axis"] = 0;
+    deaths["allies"] = 0;
+    deaths["axis"] = 0;
+
+    for(i = 0; i<level.players.size; i++)
+    {
+        player = level.players[i];
+        team = player.pers["team"];
+        
+        // Provjera da li je tim definiran i da li pripada jednom od dva moguća tima
+        if(isDefined(team) && (team == "allies" || team == "axis"))
+        {
+            // Ažuriranje brojača za odgovarajući tim
+            kills[team] += player.kills;
+            deaths[team] += player.deaths;
+        }
+    }
+
+    // Provjera koja je ekipa bolja na osnovu ubojstava i smrti
+    if(kills["allies"] > kills["axis"])
+        return "allies";
+    else if(kills["axis"] > kills["allies"])
+        return "axis";
+
+    // U slučaju da je broj smrti manji, daj prednost onom timu koji ima manje smrti
+    if(deaths["allies"] < deaths["axis"])
+        return "allies";
+    else if(deaths["axis"] < deaths["allies"])
+        return "axis";
+
+    // U slučaju da su oba tima izjednačena, odaberi nasumično
+    if(randomint(2) == 0)
+        return "allies";
+    return "axis";
 }
 
 onStartGameType()
