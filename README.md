@@ -1,9 +1,9 @@
-## Explicit Bouncers Promod [![CodeFactor](https://www.codefactor.io/repository/github/kristiandz/ebc-pm/badge)](https://www.codefactor.io/repository/github/kristiandz/ebc-pm) ![GitHub](https://img.shields.io/github/license/kristiandz/ebc-pm)
+## SDWarriors Promod [![CodeFactor](https://www.codefactor.io/repository/github/kristiandz/ebc-pm/badge)](https://www.codefactor.io/repository/github/kristiandz/ebc-pm) ![GitHub](https://img.shields.io/github/license/kristiandz/ebc-pm)
 
 This repository contains live code from the promod server.
 The mod is stable and has all known issues solved, you can use it for your needs freely, just leave credits. Feel free to contribute to the project.
 
-Visit us at [Explicit Bouncers](https://www.explicitbouncers.com) or join the [server](https://www.explicitbouncers.com/joinpromod)
+Visit us at [wzcroclan](https://wzcroclan.com)
 
 ## Features
 
@@ -50,7 +50,7 @@ If you want to run the vanilla version of the mod, you will not have all the fun
 For vanilla you don't need any dependencies, just upload the mod and run the server
 All files that run .gsx should have their .gsc counterpart for vanilla server, in case some are missing, please open an issue or make a pull request
 
-In case you don't want to run MySQL you can always opt for file storage locally, although I don't recommend it, MySQL is around 2x faster from what I've seen comparing the load and store times, and not to mention all the advantages MySQL gives. But if you are having problems with figuring out GSCLIB dependencies, you can remove the MySQL code and change to setCvar/getCvar functions. If you are not running eBc B3, you can find the SQL structure here: https://github.com/kristiandz/ebc-b3/blob/master/b3/sql/mysql/b3-update-ebc.sql
+In case you don't want to run MySQL you can always opt for file storage locally, although I don't recommend it, MySQL is around 2x faster from what I've seen comparing the load and store times, and not to mention all the advantages MySQL gives. But if you are having problems with figuring out GSCLIB dependencies, you can remove the MySQL code and change to setCvar/getCvar functions. If you are not running eBc B3, you can find the SQL structure here: https://github.com/ProGameCro/warriors-b3/blob/master/b3/sql/mysql/b3-update-warriors.sql
 
 ## Required files and folders to run the mod/server
 
