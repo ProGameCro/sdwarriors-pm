@@ -128,7 +128,7 @@ onPlayerKilled(eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHit
 
 	self.isCranked = false;
 
-	if(sMeansOfDeath != "MOD_SUICIDE" && sMeansOfDeath != "MOD_FALLING" && attacker != self)
+	if(sMeansofDeath != "MOD_SUICIDE" && sMeansofDeath != "MOD_FALLING" && attacker != self)
 	{
 		if(isAlive(attacker)) 
 		{         

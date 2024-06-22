@@ -5,20 +5,20 @@ init()
 	//       |  NAME |  INDEX |  COLOR |  ALPHA |  SHADER |  W |  H |  ALIGNY |  Y
 	height = 213;
 	//----------------------DEFAULT-------------------------
-	addDesign("Default", 0, (0.3, 0.3, 0.3), 0.6, "white", 250, 38, "middle", height);
-	addDesign("Default", 1, (1, 0, 0), 0.8, "nightvision_overlay_goggles", 250, 38, "middle", height);
+	addDesign("Default", 0, (0.3, 0.3, 0.3), 0.6, "white", 250, 43, "middle", height);
+	addDesign("Default", 1, (1, 0, 0), 0.8, "nightvision_overlay_goggles", 250, 43, "middle", height);
 	//-----------------------BLUE--------------------------
-	addDesign("Blue", 0, (0, 0, 1), 0.6, "white", 250, 38, "middle", height);
-	addDesign("Blue", 1, (0, 0, 1), 0.8, "nightvision_overlay_goggles", 250, 38, "middle", height);
+	addDesign("Blue", 0, (0, 0, 1), 0.6, "white", 250, 43, "middle", height);
+	addDesign("Blue", 1, (0, 0, 1), 0.8, "nightvision_overlay_goggles", 250, 43, "middle", height);
 	//-----------------------RED--------------------------
-	addDesign("Red", 0, (1, 0, 0), 0.6, "white", 250, 38, "middle", height);
-	addDesign("Red", 1, (1, 0, 0), 0.8, "nightvision_overlay_goggles", 250, 38, "middle", height);
+	addDesign("Red", 0, (1, 0, 0), 0.6, "white", 250, 43, "middle", height);
+	addDesign("Red", 1, (1, 0, 0), 0.8, "nightvision_overlay_goggles", 250, 43, "middle", height);
 	//-----------------------GREEN--------------------------
-	addDesign("Green", 0, (0, 1, 0), 0.6, "white", 250, 38, "middle", height);
-	addDesign("Green", 1, (0, 1, 0), 0.8, "nightvision_overlay_goggles", 250, 38, "middle", height);
+	addDesign("Green", 0, (0, 1, 0), 0.6, "white", 250, 43, "middle", height);
+	addDesign("Green", 1, (0, 1, 0), 0.8, "nightvision_overlay_goggles", 250, 43, "middle", height);
 	//-----------------------YELLOW--------------------------
-	addDesign("Yellow", 0, (1, 1, 0), 0.6, "white", 250, 38, "middle", height);
-	addDesign("Yellow", 1, (1, 1, 0), 0.8, "nightvision_overlay_goggles", 250, 38, "middle", height);
+	addDesign("Yellow", 0, (1, 1, 0), 0.6, "white", 250, 43, "middle", height);
+	addDesign("Yellow", 1, (1, 1, 0), 0.8, "nightvision_overlay_goggles", 250, 43, "middle", height);
 	//-----------------------Member--------------------------
 	addDesign("Member", 0, (1, 1, 1), 0.6, "playercard_emblem_4", 255, 46, "middle", height);
 	addDesign("Member", 1, (1, 1, 1), 0.6, "playercard_emblem_4", 253, 44, "middle", height);
@@ -114,8 +114,13 @@ getDesign(index)
 
 setDesign(theme,cancel) 
 {
+	scripts\sql::critical_enter("mysql");
 	self notify("new_emblem");
-	thread scripts\sql::db_setEmblemDesign(theme, self.guid);
+	q_str = "UPDATE player_core SET style= \"" + theme + "\" WHERE guid LIKE " + self GetGuid();
+	request = SQL_Query(q_str);
+	scripts\sql::AsyncWait(request);
+	SQL_Free(request);
+	scripts\sql::critical_leave("mysql");
 	self.pers["design"] = theme;	
 	if(isDefined(self.killcard))
 		for(i = 0; i < self.killcard.size; i++)
@@ -169,12 +174,12 @@ KillCard(from, weap, alternatewep)
 		alternatewep = "Define Weapon";
 	shader[2] setWeaponIcon(weap,alternatewep);
 	shader[2].x = 80;
-	shader[2].y = 213;	
+	shader[2].y = 212;	
 	shader[2].alignX = "center";
 	shader[2].alignY = "middle";
 	shader[3] setValue(self getKillStat(from GetEntityNumber()));
 	shader[3].x = -7;
-	shader[3].y = 199;	
+	shader[3].y = 198;	
 	shader[3].alignX = "right";
 	shader[3].font = "objective";
 	shader[3].fontscale = 2;	
@@ -183,7 +188,7 @@ KillCard(from, weap, alternatewep)
 	shader[4].label = &"-&&1";
 	shader[4] setValue(from getKillStat(self GetEntityNumber()));
 	shader[4].x = -6.6;
-	shader[4].y = 199;	
+	shader[4].y = 198;	
 	shader[4].alignX = "left";
 	shader[4].font = "objective";
 	shader[4].fontscale = 2;
@@ -192,14 +197,14 @@ KillCard(from, weap, alternatewep)
 	shader[5].label = &"K/D Ratio: ^1&&1";
 	shader[5].alignX = "left";
 	shader[5].x = -115;
-	shader[5].y = 196;
+	shader[5].y = 195;
 	if(from.pers["deaths"])
 		shader[5] setValue(int(from.pers["kills"] / from.pers["deaths"] * 100) / 100);
 	else 
 		shader[5] setValue(from.pers["kills"]);
 	shader[6].label = &"Killstreak: ^1&&1";
 	shader[6].x = -115;
-	shader[6].y = 212;
+	shader[6].y = 210;
 	shader[6].alignX = "left";
 	shader[6] setValue(from GetStat(2304));
 

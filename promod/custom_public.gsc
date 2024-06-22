@@ -238,6 +238,6 @@ main()
 	setDvar("scr_hardcore", 0); // [0-1]
 
 	// custom
-	setDvar("promod_hud_website", "wzcroclan.com");
+	setDvar("promod_hud_website", "SDWarriors");
 	setDvar("jump_slowdownEnable", "0");
 }

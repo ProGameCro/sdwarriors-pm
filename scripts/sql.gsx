@@ -2,8 +2,8 @@ init()
 {
 	// Start GSCLIB and connect to the database.
 	GSCLIB_Init();
-	SQL_Connect("127.0.0.1",3306,"username","password"); // Fill in your SQL account information here
-	SQL_SelectDB("databaseName"); // Fill in the name of your SQL database 
+	SQL_Connect("127.0.0.1",3306,"dbname","dbpass"); // Fill in your SQL account information here
+	SQL_SelectDB("dbname"); // Fill in the name of your SQL database 
 	critical("mysql");
 }
 

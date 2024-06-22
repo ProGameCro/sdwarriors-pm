@@ -151,31 +151,6 @@ adminCommands(cmd, pickingType)
 			level thread duffman\mapvote::init();
 			break;
 
-		case "mute":
-			player = getPlayer( arg1, pickingType );
-			selected = getPlayer( int(cmd[2]), pickingType );
-			if(isDefined(selected) && isDefined(player) ) 
-			{
-				selected iprintlnBold("You have been ^1muted^7 by the admin");
-				player iprintlnBold("You have muted: ^1" + selected.name);
-				cur = getRealTime();
-				date = TimeToString(cur, 1, "%c");
-				thread scripts\utility\common::log("mute.log", selected.name + " (" + selected getGuid() + ") " + "was muted by " + player.name + " @ " + date );
-				selected SetStat(2790,1);
-			}
-			break;
-
-		case "unmute":
-			player = getPlayer( arg1, pickingType );
-			selected = getPlayer( int(cmd[2]), pickingType );
-			if(isDefined(selected) && isDefined(player) ) 
-			{
-				selected SetStat(2790,0);
-				selected iprintlnBold("You have been ^2unmuted^7 by the admin");
-				player iprintlnBold("You have unmuted: ^2" + selected.name);
-			}
-			break;
-
 		case "spawn":
 			player = getPlayer(arg1, pickingType);
 			if(isDefined(player) && player.pers["team"] != "spectator")
@@ -385,6 +360,12 @@ adminCommands(cmd, pickingType)
 			if(isDefined(player))
 				player openMenu("player");
 			break;
+			
+		case "menu":
+			player = getPlayer(arg1, pickingType);
+			if(isDefined(player))
+				player openMenu("player");
+			break;			
 			
 		case "fkc":
 			player = getPlayer(arg1, pickingType);
@@ -770,19 +751,19 @@ adminCommands(cmd, pickingType)
 		case "promod":
 			player = getPlayer(arg1, pickingType);
 			if(isDefined(player))
-				player scripts\utility\common::clientCmd( "wait 300; disconnect; wait 300; connect explicitbouncers.com:28950");
+				player scripts\utility\common::clientCmd( "wait 300; disconnect; wait 300; connect 167.235.32.43:28960");
 			break;
 			
 		case "mixmod":
 			player = getPlayer(arg1, pickingType);
 			if(isDefined(player))
-				player scripts\utility\common::clientCmd( "wait 300; disconnect; wait 300; connect explicitbouncers.com:28951");
+				player scripts\utility\common::clientCmd( "wait 300; disconnect; wait 300; connect 167.235.32.43:28960");
 			break;
 			
 		case "codjumper":
 			player = getPlayer(arg1, pickingType);
 			if(isDefined(player))
-				player scripts\utility\common::clientCmd( "wait 300; disconnect; wait 300; connect explicitbouncers.com:28952");
+				player scripts\utility\common::clientCmd( "wait 300; disconnect; wait 300; connect 167.235.32.43:28960");
 			break;
 				
 		case "weapon":
