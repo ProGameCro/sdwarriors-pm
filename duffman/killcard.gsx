@@ -1,5 +1,5 @@
 #include scripts\utility\common;
-
+#Code optimization
 init() 
 {
 	//       |  NAME |  INDEX |  COLOR |  ALPHA |  SHADER |  W |  H |  ALIGNY |  Y
