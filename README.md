@@ -3,7 +3,7 @@
 This repository contains live code from the promod server.
 The mod is stable and has all known issues solved, you can use it for your needs freely, just leave credits. Feel free to contribute to the project.
 
-Visit us at [wzcroclan](https://wzcroclan.com)
+Visit us at [wzcroclan](https://wzcroclan.com) Website comming soon
 
 ## Features
 
@@ -69,3 +69,6 @@ IWD files contain /images, /sounds and /weapons
 
 Thanks to everyone who contributed to this project. I hope you will make good use of it, feel free to contribute and make a pull request if you decide to make some updates.
 The mod is in a nice state but there is always place for improvement, the active development of this mod has stopped and the source is being released, the mod will still recieve fixes and updates to existing features, in case someone decides to contribute with good improvements, I will help out with the work. Happy coding!
+
+
+If you any help with gsclib, cgsc and vcpkg contact me on discord: https://discord.gg/NBWdSgyu
